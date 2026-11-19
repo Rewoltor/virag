@@ -11,6 +11,10 @@ export const metadata: Metadata = {
     "Send flowers to your girlfriend in Manhattan. Three bouquets ($119, $229, $749) all-in with a handwritten card and delivery. Order on the web or let your AI assistant order via API or MCP.",
   alternates: { types: { "text/plain": "/llms.txt" } },
   openGraph: { type: "website", siteName: SITE.name },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,10 +59,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div>
               <strong>For AI agents</strong>
               <br />
-              <a href="/llms.txt">llms.txt</a> · <a href="/api/catalog">Catalog JSON</a> · <a href="/openapi.json">OpenAPI</a> · MCP: <code>/mcp</code>
+              <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api/catalog">Catalog JSON</a> · <a href="/openapi.json">OpenAPI</a> · MCP: <code>/mcp</code>
             </div>
             <div>
-              <Link href="/faq">FAQ & policies</Link> · <Link href="/terms">Terms</Link>
+              <Link href="/delivery">Delivery areas</Link> · <Link href="/guides/flowers-for-mom">Flowers for Mom</Link> · <Link href="/faq">FAQ & policies</Link> · <Link href="/terms">Terms</Link>
             </div>
           </div>
         </footer>

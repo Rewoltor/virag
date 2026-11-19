@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GUIDES, guideBySlug } from "@/content/guides";
+import { GUIDES, audienceOf, guideBySlug } from "@/content/guides";
 import { CARD_MESSAGES } from "@/content/cards";
 import { SITE, tierById } from "@/lib/config";
 import { faqSchema } from "@/lib/schema";
@@ -107,8 +107,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
 
         <h2>Related</h2>
         <ul>
-          {GUIDES.filter((o) => o.slug !== g.slug)
-            .slice(0, 5)
+          {[...GUIDES.filter((o) => o.slug !== g.slug && audienceOf(o) === audienceOf(g)), ...GUIDES.filter((o) => audienceOf(o) !== audienceOf(g))]
+            .slice(0, 6)
             .map((o) => (
               <li key={o.slug}>
                 <Link href={`/guides/${o.slug}`}>{o.title}</Link>

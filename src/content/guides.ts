@@ -1,6 +1,17 @@
 import type { TierId } from "@/lib/config";
+import { MORE_GUIDES } from "./guides-more";
 
 export type Block = { h2?: string; p?: string[]; ul?: string[] };
+
+export type Audience = "partner" | "mother" | "family" | "anyone" | "logistics";
+
+export const AUDIENCES: Record<Audience, string> = {
+  partner: "For your girlfriend, wife or partner",
+  mother: "For your mom",
+  family: "For family and friends",
+  anyone: "For anyone",
+  logistics: "Delivery in Manhattan: how it works",
+};
 
 export interface Guide {
   slug: string;
@@ -9,6 +20,7 @@ export interface Guide {
   answer: string; // answer-first summary (40–70 words) shown at the top
   tier: TierId; // recommended tier
   occasion?: string; // key in CARD_MESSAGES
+  audience?: Audience; // grouping on /guides; defaults to "partner"
   blocks: Block[];
   faq: { q: string; a: string }[];
 }
@@ -16,7 +28,7 @@ export interface Guide {
 const ORDER_LINE =
   "Order in Manhattan from $119 all-in (flowers, handwritten card, delivery, tax). Same-day if you order before 11:00 New York time, otherwise next day.";
 
-export const GUIDES: Guide[] = [
+const BASE_GUIDES: Guide[] = [
   {
     slug: "what-flowers-to-send-your-girlfriend",
     title: "What Flowers to Send Your Girlfriend (by Situation)",
@@ -189,6 +201,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "rose-color-meanings",
+    audience: "anyone",
     title: "Rose Color Meanings: Which Roses to Send Her",
     description: "What each rose color means — red, pink, white, yellow, orange, lavender — and which to send your girlfriend.",
     answer:
@@ -214,6 +227,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "what-to-write-on-a-flower-card",
+    audience: "anyone",
     title: "What to Write on a Flower Card: 50 Messages for Every Occasion",
     description: "Copy-ready flower card messages for your girlfriend: romantic, apology, birthday, anniversary, bad week, just because and more.",
     answer:
@@ -230,6 +244,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "how-much-to-spend-on-flowers",
+    audience: "anyone",
     title: "How Much Should I Spend on Flowers for My Girlfriend?",
     description: "How much to spend on flowers by occasion — what $100, $230 and $750 gets you in Manhattan, all-in.",
     answer:
@@ -250,6 +265,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "same-day-flower-delivery-manhattan",
+    audience: "logistics",
     title: "Same-Day Flower Delivery in Manhattan",
     description: "How same-day flower delivery in Manhattan works: cutoff times, delivery windows, ZIP codes covered, and prices all-in.",
     answer:
@@ -267,6 +283,7 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "ask-your-ai-assistant-to-send-flowers",
+    audience: "logistics",
     title: "How to Have Your AI Assistant Send Flowers (ChatGPT, Claude, Gemini)",
     description: "Let ChatGPT, Claude, Gemini or any AI agent order flowers for you in Manhattan. Copy-paste prompt, API and MCP details.",
     answer:
@@ -340,5 +357,8 @@ export const GUIDES: Guide[] = [
     faq: [{ q: "Will building security accept flowers?", a: "Almost always at reception or the lobby desk. Include the company name and floor so they can route it." }],
   },
 ];
+
+export const GUIDES: Guide[] = [...BASE_GUIDES, ...MORE_GUIDES];
+export const audienceOf = (g: Guide): Audience => g.audience ?? "partner";
 
 export const guideBySlug = (slug: string) => GUIDES.find((g) => g.slug === slug);

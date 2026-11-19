@@ -101,6 +101,43 @@ export const CARD_MESSAGES: Record<string, { label: string; messages: string[] }
       "Distance means so little when someone means so much.",
     ],
   },
+  mother: {
+    label: "For Mom",
+    messages: [
+      "For the woman who taught me everything that matters. Happy birthday, Mom.",
+      "I don't say it enough: thank you for all of it. I love you.",
+      "You made every house a home. These are for you.",
+      "Still calling you for advice. Still right every time. Love you, Mom.",
+      "Happy Mother's Day to the best one there is.",
+      "Wish I could hand you these myself. Thinking of you today.",
+    ],
+  },
+  thank_you: {
+    label: "Thank you",
+    messages: [
+      "Thank you for showing up when it mattered. I won't forget it.",
+      "You didn't have to, and you did anyway. Thank you.",
+      "For your time, your patience and your advice — thank you.",
+      "Thank you for having me. Your home felt like mine.",
+    ],
+  },
+  new_baby: {
+    label: "New baby",
+    messages: [
+      "Welcome to the world, little one. And congratulations, Mom — you did it.",
+      "So much love for all three of you. Rest when you can.",
+      "The world just got a little brighter. Congratulations!",
+    ],
+  },
+  sympathy: {
+    label: "Sympathy",
+    messages: [
+      "Thinking of you and your family.",
+      "With love, and with you in this.",
+      "There are no right words. Just know I'm here.",
+      "Holding you close in my thoughts.",
+    ],
+  },
 };
 
 export const OCCASIONS = Object.keys(CARD_MESSAGES);

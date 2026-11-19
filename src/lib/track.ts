@@ -29,7 +29,11 @@ const AGENT_PATTERNS: [RegExp, string, Channel][] = [
   [/DuckAssistBot/i, "duckduckgo:assist", "ai_assistant"],
   [/meta-externalfetcher/i, "meta:fetcher", "ai_assistant"],
   [/meta-externalagent/i, "meta:agent", "ai_crawler"],
+  [/Google-Agent/i, "google:agent", "browser_agent"], // Project Mariner / Gemini agentic browsing
   [/Google-CloudVertexBot|Gemini/i, "google:gemini", "ai_assistant"],
+  [/Grok-DeepSearch/i, "xai:deepsearch", "ai_assistant"],
+  [/xAI-SearchBot/i, "xai:searchbot", "ai_crawler"],
+  [/GrokBot|xAI-Grok/i, "xai:grok", "ai_crawler"],
   [/Amazonbot/i, "amazon:bot", "ai_crawler"],
   [/Applebot/i, "apple:bot", "ai_crawler"],
   [/cohere-ai|cohere-training/i, "cohere", "ai_crawler"],
@@ -45,7 +49,8 @@ const AGENT_PATTERNS: [RegExp, string, Channel][] = [
 ];
 
 export function classify(ua: string, headers: Headers, pathname: string): { channel: Channel; agent: string } {
-  // Agents signing requests with Web Bot Auth (e.g. ChatGPT agent sends Signature-Agent: chatgpt.com)
+  // Agents signing requests with Web Bot Auth (e.g. ChatGPT agent and OpenAI Dots send Signature-Agent: chatgpt.com).
+  // Meta Muse and OpenAI Dots otherwise look like ordinary Chrome, so they land in "human" unless signed.
   const sigAgent = headers.get("signature-agent");
   if (sigAgent) return { channel: "browser_agent", agent: `signed:${sigAgent.replace(/"/g, "").slice(0, 60)}` };
 

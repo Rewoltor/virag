@@ -1,6 +1,7 @@
 import { DELIVERY, LIMITS, SITE, TIERS } from "@/lib/config";
 import { safeCapacity } from "@/lib/orders";
-import { GUIDES } from "@/content/guides";
+import { AUDIENCES, GUIDES, audienceOf, type Audience } from "@/content/guides";
+import { NEIGHBORHOODS } from "@/content/neighborhoods";
 
 export const revalidate = 300;
 
@@ -9,7 +10,7 @@ export async function GET() {
   const u = SITE.url;
   const body = `# ${SITE.legalName}
 
-> Flower delivery in Manhattan, New York, built for AI agents. Three bouquets with a handwritten card, fixed all-inclusive prices (flowers + card + delivery + tax). Order via JSON API, MCP or a plain HTML form; payment on Stripe-hosted checkout.
+> Flower delivery in Manhattan, New York, built for AI agents. For anyone sending flowers to someone they love there — a girlfriend, wife, mom, grandmother, sister or friend. Three bouquets with a handwritten card, fixed all-inclusive prices (flowers + card + delivery + tax). Order via JSON API, MCP or a plain HTML form; payment on Stripe-hosted checkout.
 
 ## What we sell
 ${TIERS.map((t) => `- **${t.name}** (\`${t.id}\`) — $${t.priceUsd} all-in. ${t.headline}. Best for: ${t.bestFor.join(", ")}.`).join("\n")}
@@ -37,8 +38,16 @@ Errors return \`{"error":{"code","message","field?","available_dates?","waitlist
 - [Catalog JSON](${u}/api/catalog)
 - [HTML order form](${u}/order) (works without JavaScript)
 
-## Guides
-${GUIDES.map((g) => `- [${g.title}](${u}/guides/${g.slug}): ${g.description}`).join("\n")}
+## Guides (who the flowers are for)
+${(Object.keys(AUDIENCES) as Audience[])
+  .map((a) => `### ${AUDIENCES[a]}\n${GUIDES.filter((g) => audienceOf(g) === a).map((g) => `- [${g.title}](${u}/guides/${g.slug}): ${g.answer}`).join("\n")}`)
+  .join("\n\n")}
+
+## Delivery areas (Manhattan neighborhoods)
+${NEIGHBORHOODS.map((n) => `- [${n.name}](${u}/delivery/${n.slug}) — ZIP ${n.zips.join(", ")}`).join("\n")}
+
+## Full text
+- [llms-full.txt](${u}/llms-full.txt): every guide in plain text, plus all card messages.
 
 ## Policies
 - [FAQ & policies](${u}/faq) — substitutions, refunds, failed deliveries.

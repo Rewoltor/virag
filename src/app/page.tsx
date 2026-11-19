@@ -61,6 +61,14 @@ export default async function Home() {
           <a href="/llms.txt">llms.txt</a>. Your assistant gets a secure checkout link — you approve and pay. <Link href="/guides/ask-your-ai-assistant-to-send-flowers">How it works →</Link>
         </p>
 
+        <h2>Who are the flowers for?</h2>
+        <p>
+          <Link href="/guides/what-flowers-to-send-your-girlfriend">Girlfriend</Link> · <Link href="/guides/flowers-for-your-wife">Wife</Link> ·{" "}
+          <Link href="/guides/flowers-for-mom">Mom</Link> · <Link href="/guides/mothers-day-flowers-manhattan">Mother&apos;s Day</Link> ·{" "}
+          <Link href="/guides/flowers-for-grandma">Grandma</Link> · <Link href="/guides/flowers-for-your-sister-or-best-friend">Sister or best friend</Link> ·{" "}
+          <Link href="/guides/send-flowers-to-mom-in-nyc-from-out-of-town">Sending from abroad</Link> · <Link href="/delivery">Your neighborhood</Link>
+        </p>
+
         <h2>Not sure what to send?</h2>
         <ul>
           {GUIDES.slice(0, 8).map((g) => (
