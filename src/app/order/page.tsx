@@ -8,7 +8,7 @@ import { safeCapacity } from "@/lib/orders";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Order flowers — Manhattan delivery",
-  description: "Order a bouquet with a handwritten card for delivery in Manhattan. $119, $229 or $749 all-in. Works without JavaScript; AI agents welcome.",
+  description: "Order a best-selling bouquet with your card message for delivery in Manhattan. $89, $119, $159, $229 or $749 all-in. Works without JavaScript; AI agents welcome.",
 };
 
 type SP = Record<string, string | string[] | undefined>;

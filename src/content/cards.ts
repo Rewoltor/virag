@@ -138,6 +138,17 @@ export const CARD_MESSAGES: Record<string, { label: string; messages: string[] }
       "Holding you close in my thoughts.",
     ],
   },
+  holiday: {
+    label: "Thanksgiving & holidays",
+    messages: [
+      "Thank you for having me. The table, the people, all of it. Happy Thanksgiving.",
+      "Wish I were at the table with you this year. Save me a slice. Happy Thanksgiving.",
+      "Grateful for you, this year and every year.",
+      "Happy Hanukkah! Eight nights, and I'm thinking of you on every one.",
+      "Merry Christmas from far away. Next year, I'm bringing these in person.",
+      "For the person who makes the holidays feel like home.",
+    ],
+  },
 };
 
 export const OCCASIONS = Object.keys(CARD_MESSAGES);

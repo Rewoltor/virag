@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const n = neighborhoodBySlug((await params).slug);
   if (!n) return {};
   const title = `Flower Delivery ${n.name}, Manhattan — Same Day`;
-  const description = `Send flowers with a handwritten card to the ${n.name} (ZIP ${n.zips.join(", ")}). $119, $229 or $749 all-in. Same-day before ${DELIVERY.sameDayCutoffHourET}:00 ET. Order online, by API or via your AI assistant.`;
+  const description = `Send flowers with your card message to the ${n.name} (ZIP ${n.zips.join(", ")}). $89, $119, $159, $229 or $749 all-in. Same-day before ${DELIVERY.sameDayCutoffHourET}:00 ET. Order online, by API or via your AI assistant.`;
   return { title, description, alternates: { canonical: `/delivery/${n.slug}` }, openGraph: { title, description } };
 }
 
@@ -26,7 +26,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
   const faq = [
     { q: `Do you deliver flowers to the ${n.name}?`, a: `Yes. We deliver to every address in ${n.name} (ZIP ${n.zips.join(", ")}), ${DELIVERY.window}.` },
     { q: `Can I get same-day flower delivery in ${n.name}?`, a: `Yes, if you order before ${DELIVERY.sameDayCutoffHourET}:00 New York time. After that, choose next-day delivery.` },
-    { q: "How much does flower delivery cost?", a: `Nothing extra. Prices are all-in: ${TIERS.map((t) => `${t.name} $${t.priceUsd}`).join(", ")} — flowers, handwritten card, delivery and tax included.` },
+    { q: "How much does flower delivery cost?", a: `Nothing extra. Prices are all-in: ${TIERS.map((t) => `${t.name} $${t.priceUsd}`).join(", ")} — flowers, card, delivery and tax included.` },
     { q: "Can my AI assistant order for me?", a: `Yes. Assistants can use our JSON API (${SITE.url}/api/catalog), our MCP server (${SITE.url}/mcp) or the plain HTML order form.` },
   ];
 
@@ -50,7 +50,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
         </p>
         <h1>Flower delivery in {n.name}</h1>
         <p className="answer">
-          {n.intro} Three bouquets, all-in: {TIERS.map((t) => `${t.name} $${t.priceUsd}`).join(" · ")} — handwritten card, delivery and tax included. Same-day if you order before {DELIVERY.sameDayCutoffHourET}:00 New York
+          {n.intro} Five best-selling bouquets, all-in: {TIERS.map((t) => `${t.name} $${t.priceUsd}`).join(" · ")} — card, delivery and tax included. Same-day if you order before {DELIVERY.sameDayCutoffHourET}:00 New York
           time.
         </p>
 

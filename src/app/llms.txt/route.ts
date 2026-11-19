@@ -10,7 +10,7 @@ export async function GET() {
   const u = SITE.url;
   const body = `# ${SITE.legalName}
 
-> Flower delivery in Manhattan, New York, built for AI agents. For anyone sending flowers to someone they love there — a girlfriend, wife, mom, grandmother, sister or friend. Three bouquets with a handwritten card, fixed all-inclusive prices (flowers + card + delivery + tax). Order via JSON API, MCP or a plain HTML form; payment on Stripe-hosted checkout.
+> Flower delivery in Manhattan, New York, built for AI agents. For anyone sending flowers to someone they love there — a girlfriend, wife, mom, grandmother, sister or friend. Five best-selling bouquets from New York florists ($89–$749), fixed all-inclusive prices (flowers + card + delivery + tax). Classic and up come arranged with a handwritten card; Petite and Sweet arrive gift-boxed with a printed card. Order via JSON API, MCP or a plain HTML form; payment on Stripe-hosted checkout.
 
 ## What we sell
 ${TIERS.map((t) => `- **${t.name}** (\`${t.id}\`) — $${t.priceUsd} all-in. ${t.headline}. Best for: ${t.bestFor.join(", ")}.`).join("\n")}
@@ -32,6 +32,14 @@ Errors return \`{"error":{"code","message","field?","available_dates?","waitlist
 
 ## MCP
 - Endpoint: \`${u}/mcp\` (Streamable HTTP, stateless). Tools: list_bouquets, check_delivery, suggest_card_message, create_order, get_order_status.
+
+## Agent skill
+- [SKILL.md](${u}/skill.md): drop-in skill for Claude, OpenClaw and other agents that support SKILL.md.
+
+## Upcoming dates (2026)
+- Thanksgiving: Thu Nov 26 is a no-delivery day. Deliver host flowers Wed Nov 25, or Fri Nov 27.
+- Hanukkah: begins at sundown Fri Dec 4; deliver Fri Dec 4 morning or weekdays Dec 7–11.
+- Christmas: no delivery Dec 25; book Dec 23 or 24 (bookable 30 days ahead).
 
 ## Machine-readable
 - [OpenAPI spec](${u}/openapi.json)

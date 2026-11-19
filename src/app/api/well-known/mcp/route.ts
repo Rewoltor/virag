@@ -7,7 +7,7 @@ export function GET() {
   return Response.json(
     {
       name: "virag-flowers",
-      description: "Order flower bouquets with a handwritten card for delivery in Manhattan, NYC.",
+      description: "Order best-selling flower bouquets with a card message for delivery in Manhattan, NYC, from $89 all-in.",
       endpoint: `${SITE.url}/mcp`,
       transport: "streamable-http",
       authentication: "none",

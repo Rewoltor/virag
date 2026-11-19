@@ -13,7 +13,7 @@ export async function GET(req: Request) {
   after(() => logEvent("catalog_fetch", ctx, { remaining: cap.remaining }));
   return json({
     merchant: SITE.legalName,
-    what_we_sell: "Fresh flower bouquets with a handwritten card, delivered in Manhattan, New York.",
+    what_we_sell: "Five best-selling flower bouquets from New York florists, with a card carrying your message, delivered in Manhattan, New York.",
     currency: "USD",
     prices_are_all_inclusive: true,
     tiers: tiersForApi(),

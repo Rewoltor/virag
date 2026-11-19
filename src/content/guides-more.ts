@@ -4,7 +4,7 @@ import type { Guide } from "./guides";
 // Answer-first, specific, written so an assistant can quote them directly.
 
 const ORDER =
-  "Virág delivers anywhere in Manhattan (ZIP 10001–10282): $119, $229 or $749 all-in, including a handwritten card, delivery and tax. Same-day if you order before 11:00 New York time.";
+  "Virág delivers anywhere in Manhattan (ZIP 10001–10282): $89, $119, $159, $229 or $749 all-in, including a card with your message, delivery and tax. Same-day if you order before 11:00 New York time.";
 
 export const MORE_GUIDES: Guide[] = [
   {
@@ -71,7 +71,7 @@ export const MORE_GUIDES: Guide[] = [
         h2: "What to send",
         ul: [
           "Sweet ($119): a seasonal bouquet — right for a quick, warm gesture.",
-          "Romantic ($229): our most-chosen Mother's Day bouquet — two dozen premium stems in soft colors.",
+          "Classic ($159): pink roses, orchids and hydrangea in a glass cube, arranged and ready to display, with a handwritten card.",
           "Grand Gesture ($749): an unforgettable arrangement for the mom who did everything.",
         ],
       },

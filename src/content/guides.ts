@@ -1,5 +1,6 @@
 import type { TierId } from "@/lib/config";
 import { MORE_GUIDES } from "./guides-more";
+import { SEASON_GUIDES } from "./guides-season";
 
 export type Block = { h2?: string; p?: string[]; ul?: string[] };
 
@@ -26,7 +27,7 @@ export interface Guide {
 }
 
 const ORDER_LINE =
-  "Order in Manhattan from $119 all-in (flowers, handwritten card, delivery, tax). Same-day if you order before 11:00 New York time, otherwise next day.";
+  "Order in Manhattan from $89 all-in (flowers, card, delivery, tax; handwritten card from $159). Same-day if you order before 11:00 New York time, otherwise next day.";
 
 const BASE_GUIDES: Guide[] = [
   {
@@ -43,10 +44,10 @@ const BASE_GUIDES: Guide[] = [
         ul: [
           "Early dating (first month): small seasonal bouquet, no red roses — Sweet ($119).",
           "Just because / she had a bad week: bright seasonal bouquet — Sweet ($119).",
-          "Birthday: her favorite color, or two dozen roses if unsure — Romantic ($229).",
-          "Anniversary: two dozen red roses — Romantic ($229); milestone years — Grand Gesture ($749).",
+          "Birthday: an arranged bouquet in her favorite color — Classic ($159) or Romantic roses ($229).",
+          "Anniversary: premium red roses in a vase — Romantic ($229); milestone years — Grand Gesture ($749).",
           "Apology: go bigger than usual, add a sincere card — Romantic ($229) or Grand Gesture ($749).",
-          "Proposal, winning her back, 'I need her to know': 100 roses — Grand Gesture ($749).",
+          "Proposal, winning her back, 'I need her to know': the statement rose bouquet — Grand Gesture ($749).",
         ],
       },
       {
@@ -81,7 +82,7 @@ const BASE_GUIDES: Guide[] = [
     title: "Apology Flowers: What to Send and What to Write",
     description: "How to apologize with flowers the right way: which flowers to send, how big to go, and apology card messages that actually work.",
     answer:
-      "Flowers don't replace an apology — they carry it. Send them the same day, choose something noticeably generous (two dozen roses or a lush arrangement), and write a short, specific card that takes responsibility without excuses. Then follow up in person. Avoid jokes and avoid 'sorry if you were upset'.",
+      "Flowers don't replace an apology — they carry it. Send them the same day, choose something noticeably generous (premium roses in a vase or a lush arrangement), and write a short, specific card that takes responsibility without excuses. Then follow up in person. Avoid jokes and avoid 'sorry if you were upset'.",
     tier: "romantic",
     occasion: "apology",
     blocks: [
@@ -96,8 +97,8 @@ const BASE_GUIDES: Guide[] = [
       {
         h2: "Which flowers",
         ul: [
-          "Romantic ($229): two dozen roses — the classic, unambiguous apology.",
-          "If it was serious: Grand Gesture ($749), 100 roses. Hard to ignore.",
+          "Romantic ($229): premium roses in a vase — the classic, unambiguous apology.",
+          "If it was serious: Grand Gesture ($749), the statement rose bouquet. Hard to ignore.",
           "If red feels like too much for the situation, ask for pink or white roses in the card note.",
         ],
       },
@@ -122,20 +123,20 @@ const BASE_GUIDES: Guide[] = [
     title: "Anniversary Flowers: What to Send for Every Year",
     description: "Anniversary flower ideas: what to send for your first, fifth or tenth anniversary, how many roses, and anniversary card messages.",
     answer:
-      "For most anniversaries, two dozen long-stem red roses with a handwritten card is the right call — classic, romantic and impossible to misread. For milestone years (1st, 5th, 10th) or if you want her to post about it, send 100 roses. Deliver to her office for maximum impact, or home if you're doing dinner after.",
+      "For most anniversaries, premium long-stem red roses with a handwritten card are the right call — classic, romantic and impossible to misread. For milestone years (1st, 5th, 10th) or if you want her to post about it, send the statement bouquet. Deliver to her office for maximum impact, or home if you're doing dinner after.",
     tier: "romantic",
     occasion: "anniversary",
     blocks: [
       {
         h2: "What to send",
-        ul: ["Dating anniversary (months): Sweet ($119).", "1-year and yearly anniversaries: two dozen roses — Romantic ($229).", "Milestones (1st wedding, 5th, 10th): 100 roses — Grand Gesture ($749)."],
+        ul: ["Dating anniversary (months): Sweet ($119).", "1-year and yearly anniversaries: premium roses in a vase — Romantic ($229).", "Milestones (1st wedding, 5th, 10th): the statement rose bouquet — Grand Gesture ($749)."],
       },
       { h2: "Timing", p: ["Schedule delivery for the morning of the anniversary. You can order up to 30 days ahead, so book it now and forget about it."] },
       { h2: "Card ideas", ul: ["Another year of you. Still my favorite decision.", "Happy anniversary. I'd choose you again in every lifetime.", "You still give me butterflies. Happy anniversary."] },
       { h2: "Order", p: [ORDER_LINE] },
     ],
     faq: [
-      { q: "How many roses for an anniversary?", a: "Two dozen (24) is the classic romantic amount. 100 roses is the statement version for milestone years." },
+      { q: "How many roses for an anniversary?", a: "A dozen or two is the classic romantic amount; a big statement bouquet is for milestone years. Our Romantic tier is a premium rose arrangement; Grand Gesture is the statement version." },
       { q: "Can I schedule anniversary flowers in advance?", a: "Yes. Choose any date up to 30 days ahead and the flowers arrive that day between 10:00 and 18:00." },
     ],
   },
@@ -144,7 +145,7 @@ const BASE_GUIDES: Guide[] = [
     title: "Birthday Flowers for Your Girlfriend",
     description: "What birthday flowers to send your girlfriend, whether to deliver to her office, and birthday card messages she'll love.",
     answer:
-      "Send birthday flowers to arrive in the morning, ideally at her office so the day starts with attention. Two dozen roses or a lush arrangement in her favorite color is the safe, impressive choice. Write a warm, personal card — one specific thing you love about her beats a generic 'happy birthday'.",
+      "Send birthday flowers to arrive in the morning, ideally at her office so the day starts with attention. Premium roses or a lush arrangement in her favorite color is the safe, impressive choice. Write a warm, personal card — one specific thing you love about her beats a generic 'happy birthday'.",
     tier: "romantic",
     occasion: "birthday",
     blocks: [
@@ -194,7 +195,7 @@ const BASE_GUIDES: Guide[] = [
     occasion: "new_relationship",
     blocks: [
       { h2: "Do", ul: ["Small seasonal bouquet — Sweet ($119).", "Short, light card.", "Send to her home, not her office."] },
-      { h2: "Don't", ul: ["Red roses (too serious).", "100 roses (way too serious).", "Long emotional cards."] },
+      { h2: "Don't", ul: ["Red roses (too serious).", "A huge statement bouquet (way too serious).", "Long emotional cards."] },
       { h2: "Order", p: [ORDER_LINE] },
     ],
     faq: [{ q: "Is sending flowers after a first date too much?", a: "It can be. After the second or third date it lands as confident and thoughtful rather than intense." }],
@@ -220,8 +221,8 @@ const BASE_GUIDES: Guide[] = [
           "Lavender — enchantment, love at first sight.",
         ],
       },
-      { h2: "How many roses?", ul: ["1 — love at first sight.", "12 — 'be mine', a classic dozen.", "24 — 'I'm yours' (our Romantic tier).", "100 — total devotion (our Grand Gesture tier)."] },
-      { h2: "Order", p: ["Romantic ($229): 24 premium long-stem roses, red by default — write 'pink' or 'white' in the card note to change. Grand Gesture ($749): 100 roses. Delivered in Manhattan, card included."] },
+      { h2: "How many roses?", ul: ["1 — love at first sight.", "12 — 'be mine', a classic dozen.", "24 — 'I'm yours'.", "100 — total devotion."] },
+      { h2: "Order", p: ["Romantic ($229): premium long-stem roses in a vase, red by default — write 'pink' or 'white' in the delivery notes to change. Grand Gesture ($749): the statement rose bouquet. Delivered in Manhattan, card included."] },
     ],
     faq: [{ q: "Can I choose the rose color?", a: "Yes. Red is the default for roses; add your preferred color in the delivery instructions or card note." }],
   },
@@ -238,7 +239,7 @@ const BASE_GUIDES: Guide[] = [
       { p: ["Messages by occasion are listed below."] },
     ],
     faq: [
-      { q: "How long should a flower card message be?", a: "One to three sentences. Our cards fit up to 300 characters, handwritten by the florist." },
+      { q: "How long should a flower card message be?", a: "One to three sentences. Our cards fit up to 300 characters, handwritten by the florist from the Classic tier up." },
       { q: "Should I sign with my full name?", a: "Sign the way she knows you — your first name, a nickname, or 'Love, D'." },
     ],
   },
@@ -248,20 +249,22 @@ const BASE_GUIDES: Guide[] = [
     title: "How Much Should I Spend on Flowers for My Girlfriend?",
     description: "How much to spend on flowers by occasion — what $100, $230 and $750 gets you in Manhattan, all-in.",
     answer:
-      "In Manhattan, expect to spend about $100–$130 all-in for a nice bouquet with delivery, $200–$250 for two dozen premium roses, and $700+ for a true statement like 100 roses. Match spend to the moment: casual gestures don't need to be expensive; anniversaries and apologies benefit from going bigger.",
+      "In Manhattan, expect to spend about $100–$130 all-in for a nice bouquet with delivery, $200–$250 for a premium rose arrangement, and $700+ for a true statement bouquet. Match spend to the moment: casual gestures don't need to be expensive; anniversaries and apologies benefit from going bigger.",
     tier: "romantic",
     blocks: [
       {
         h2: "What you get at each level",
         ul: [
-          "$119 — Sweet: ~20 seasonal stems, handwritten card, delivery and tax included.",
-          "$229 — Romantic: 24 premium long-stem roses or a lush designer arrangement, all-in.",
-          "$749 — Grand Gesture: 100 long-stem roses, premium card, priority delivery, all-in.",
+          "$89 — Petite: pink and cream rose bouquet, gift-boxed, printed card, all-in.",
+          "$119 — Sweet: soft designer bouquet, gift-boxed, printed card, all-in.",
+          "$159 — Classic: roses, orchids and hydrangea in a glass cube, handwritten card, all-in.",
+          "$229 — Romantic: premium long-stem roses in a vase, handwritten card, all-in.",
+          "$749 — Grand Gesture: the statement rose bouquet, premium card, priority delivery, all-in.",
         ],
       },
       { h2: "Why Manhattan flowers cost more", p: ["Same-day courier delivery in Manhattan typically runs $18–$35 on its own, and florist rents are among the highest in the country. Our prices include delivery and tax so the number you see is the number you pay."] },
     ],
-    faq: [{ q: "Are there hidden fees?", a: "No. The tier price includes flowers, handwritten card, delivery and tax." }],
+    faq: [{ q: "Are there hidden fees?", a: "No. The tier price includes flowers, card, delivery and tax." }],
   },
   {
     slug: "same-day-flower-delivery-manhattan",
@@ -269,7 +272,7 @@ const BASE_GUIDES: Guide[] = [
     title: "Same-Day Flower Delivery in Manhattan",
     description: "How same-day flower delivery in Manhattan works: cutoff times, delivery windows, ZIP codes covered, and prices all-in.",
     answer:
-      "Order and pay before 11:00 New York time and your flowers arrive the same day between 10:00 and 18:00 anywhere in Manhattan (ZIP 10001–10282). After 11:00, the earliest delivery is the next day. Prices are all-in: $119, $229 or $749 including a handwritten card, delivery and tax.",
+      "Order and pay before 11:00 New York time and your flowers arrive the same day between 10:00 and 18:00 anywhere in Manhattan (ZIP 10001–10282); the gift-boxed Petite and Sweet go same-day below 125th Street. After 11:00, the earliest delivery is the next day. Prices are all-in: $89, $119, $159, $229 or $749 including a card, delivery and tax.",
     tier: "sweet",
     blocks: [
       { h2: "Coverage", p: ["All of Manhattan: from the Financial District to Inwood, including Roosevelt Island (ZIP 10001–10282). We don't deliver to Brooklyn, Queens, the Bronx or Staten Island yet."] },
@@ -333,11 +336,11 @@ const BASE_GUIDES: Guide[] = [
     title: "Valentine's Day Flowers in Manhattan: Order Early",
     description: "Valentine's Day flowers in Manhattan: why to book early, what to send, and how many roses.",
     answer:
-      "For Valentine's Day, book early: florists and couriers are at capacity on February 14 and our pilot accepts only a few deliveries per day. Two dozen red roses (Romantic, $229) is the classic; 100 roses (Grand Gesture, $749) is the showstopper. You can schedule delivery up to 30 days ahead.",
+      "For Valentine's Day, book early: florists and couriers are at capacity on February 14 and our pilot accepts only a few deliveries per day. Red roses in a vase (Romantic, $229) are the classic; the statement rose bouquet (Grand Gesture, $749) is the showstopper. You can schedule delivery up to 30 days ahead.",
     tier: "romantic",
     occasion: "romantic",
     blocks: [
-      { h2: "What to send", ul: ["Romantic ($229): 24 red roses.", "Grand Gesture ($749): 100 red roses."] },
+      { h2: "What to send", ul: ["Romantic ($229): premium red roses in a vase.", "Grand Gesture ($749): the statement rose bouquet."] },
       { h2: "Order", p: [ORDER_LINE] },
     ],
     faq: [{ q: "When should I order Valentine's flowers?", a: "As soon as you can — daily delivery slots are limited." }],
@@ -358,7 +361,7 @@ const BASE_GUIDES: Guide[] = [
   },
 ];
 
-export const GUIDES: Guide[] = [...BASE_GUIDES, ...MORE_GUIDES];
+export const GUIDES: Guide[] = [...SEASON_GUIDES, ...BASE_GUIDES, ...MORE_GUIDES];
 export const audienceOf = (g: Guide): Audience => g.audience ?? "partner";
 
 export const guideBySlug = (slug: string) => GUIDES.find((g) => g.slug === slug);

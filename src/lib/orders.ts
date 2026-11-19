@@ -3,7 +3,7 @@ import { z } from "zod";
 import { FieldValue, type Transaction } from "firebase-admin/firestore";
 import { getDb } from "./firebase";
 import { DELIVERY, LIMITS, SITE, TIERS, tierById, type TierId } from "./config";
-import { availableDates, checkDeliveryDate, isManhattanZip } from "./delivery";
+import { applyTierZipRule, availableDates, checkDeliveryDate, isManhattanZip } from "./delivery";
 import { getStripe } from "./stripe";
 import { notifyOwner } from "./telegram";
 import { logEvent, type TrackContext } from "./track";
@@ -11,14 +11,14 @@ import { logEvent, type TrackContext } from "./track";
 // ---------- Input schema (shared by JSON API, HTML form and MCP) ----------
 
 export const orderInputSchema = z.object({
-  tier: z.enum(["sweet", "romantic", "grand"]).describe("Which bouquet: sweet ($119), romantic ($229) or grand ($749). All prices include card, delivery and tax."),
+  tier: z.enum(["petite", "sweet", "classic", "romantic", "grand"]).describe("Which bouquet: petite ($89), sweet ($119), classic ($159), romantic ($229) or grand ($749). All prices include card, delivery and tax."),
   recipient_name: z.string().trim().min(1).max(80).describe("Full name of the person receiving the flowers."),
   recipient_phone: z.string().trim().min(7).max(25).describe("Recipient's US phone number. The courier calls it for building access."),
   address_line1: z.string().trim().min(3).max(120).describe("Street address in Manhattan, e.g. '245 E 19th St'."),
   address_line2: z.string().trim().max(60).optional().describe("Apartment, floor, company or suite."),
   zip: z.string().trim().describe("5-digit Manhattan ZIP code (10001–10282)."),
   delivery_date: z.string().trim().optional().describe("YYYY-MM-DD in New York time. Omit for the earliest available date."),
-  card_message: z.string().trim().max(LIMITS.cardMessageMaxChars).default("").describe("Text handwritten on the card, max 300 characters."),
+  card_message: z.string().trim().max(LIMITS.cardMessageMaxChars).default("").describe("Text for the card (handwritten for classic, romantic and grand; printed for petite and sweet), max 300 characters."),
   sender_name: z.string().trim().min(1).max(60).describe("How the card is signed, e.g. 'Love, Daniel'."),
   buyer_email: z.string().trim().email().optional().describe("Buyer's email for the receipt and delivery confirmation."),
   delivery_instructions: z.string().trim().max(200).optional().describe("Doorman, buzzer code, 'leave with front desk', etc."),
@@ -140,7 +140,8 @@ export function validate(raw: unknown): { ok: true; input: OrderInput; phone: st
     return { ok: false, status: 422, error: { code: "outside_delivery_area", field: "zip", message: `We currently deliver only in Manhattan (ZIP ${DELIVERY.zipMin}–${DELIVERY.zipMax}). ${input.zip} is outside our area.` } };
   const phone = normalizePhone(input.recipient_phone);
   if (!phone) return { ok: false, status: 400, error: { code: "invalid_request", field: "recipient_phone", message: "recipient_phone must be a 10-digit US number." } };
-  const date = checkDeliveryDate(input.delivery_date);
+  const checked = checkDeliveryDate(input.delivery_date);
+  const date = checked.ok ? applyTierZipRule(tierById(input.tier)!, input.zip, checked.date, !!input.delivery_date) : checked;
   if (!date.ok) return { ok: false, status: 422, error: { code: "date_unavailable", field: "delivery_date", message: date.error, available_dates: availableDates().slice(0, 7) } };
   return { ok: true, input, phone, date: date.date };
 }
@@ -230,7 +231,7 @@ export async function createOrder(raw: unknown, ctx: TrackContext): Promise<Crea
             unit_amount: tier.priceUsd * 100,
             product_data: {
               name: `${SITE.name} ${tier.name} — ${tier.headline}`,
-              description: `Delivery ${date} in Manhattan to ${input.recipient_name}. Handwritten card included.`,
+              description: `Delivery ${date} in Manhattan to ${input.recipient_name}. ${tier.card === "handwritten" ? "Handwritten" : "Printed"} card included.`,
             },
           },
         },
@@ -333,7 +334,10 @@ export const tiersForApi = () =>
     id: t.id,
     name: t.name,
     price_usd: t.priceUsd,
-    price_includes: "flowers, handwritten card, delivery, tax",
+    price_includes: `flowers, ${t.card} card, delivery, tax`,
+    card: t.card,
+    arrives: t.vase ? "arranged in a vase or container, ready to display" : "wrapped in a gift box, no vase",
+    same_day: t.sameDayAboveHarlem ? "anywhere in Manhattan" : "below 125th St; next day above",
     headline: t.headline,
     description: t.description,
     includes: t.includes,

@@ -79,7 +79,8 @@ main.home { padding: 0; }
 .band .text-link { color: var(--cream); font-size: 1rem; }
 .band-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
 .band-note { font-size: 0.86rem; color: #d9b9bf; margin: 18px 0 0; }
-.bouquets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.bouquets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+@media (max-width: 1100px) { .bouquets { grid-template-columns: repeat(3, 1fr); } }
 .bouquet { background: var(--card); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; color: var(--ink); }
 .bouquet-img { position: relative; display: block; aspect-ratio: 4 / 3; background: var(--blush); }
 .bouquet-img img { object-fit: cover; }

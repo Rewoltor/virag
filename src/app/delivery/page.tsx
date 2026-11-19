@@ -5,7 +5,7 @@ import { DELIVERY } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Manhattan flower delivery areas",
-  description: "We deliver flowers with a handwritten card to every Manhattan neighborhood (ZIP 10001–10282). Same-day before 11:00 ET. See delivery notes for each area.",
+  description: "We deliver best-selling bouquets with your card message to every Manhattan neighborhood (ZIP 10001–10282). Same-day before 11:00 ET. See delivery notes for each area.",
   alternates: { canonical: "/delivery" },
 };
 

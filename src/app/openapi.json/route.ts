@@ -39,7 +39,7 @@ export function GET() {
       title: `${SITE.legalName} ordering API`,
       version: "1.0.0",
       description:
-        "Order flower bouquets with a handwritten card for delivery in Manhattan, NYC. Prices are all-inclusive. Creating an order returns a Stripe-hosted checkout_url; the order is confirmed once paid. No authentication required.",
+        "Order best-selling flower bouquets with a card message for delivery in Manhattan, NYC (from $89 all-in). Prices are all-inclusive. Creating an order returns a Stripe-hosted checkout_url; the order is confirmed once paid. No authentication required.",
     },
     servers: [{ url: SITE.url }],
     paths: {

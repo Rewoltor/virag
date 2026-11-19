@@ -14,18 +14,21 @@ export const revalidate = 60;
 const HOME_FAQ = [
   { q: "Where do you deliver?", a: `Anywhere in Manhattan, New York (ZIP ${DELIVERY.zipMin}–${DELIVERY.zipMax}), between ${DELIVERY.window}.` },
   { q: "Can I get same-day delivery?", a: `Yes — order and pay before ${DELIVERY.sameDayCutoffHourET}:00 New York time. After that, the earliest delivery is the next day.` },
-  { q: "What does the price include?", a: "Fresh flowers, a handwritten card with your message, delivery in Manhattan and tax. No extra fees at checkout." },
+  { q: "What does the price include?", a: "Fresh flowers, a card with your message (handwritten from $159, printed on the gift-boxed Petite and Sweet), delivery in Manhattan and tax. No extra fees at checkout." },
   { q: "Can my AI assistant order for me?", a: "Yes. Agents can use our JSON API (/api/orders), our MCP server (/mcp) or the plain HTML order form. Payment is on Stripe's hosted checkout." },
 ];
 
 const RECIPIENTS: [string, string][] = [
+  ["Thanksgiving host (Nov 25)", "/guides/thanksgiving-flowers-manhattan"],
+  ["Hanukkah", "/guides/hanukkah-flowers-manhattan"],
+  ["Christmas (Dec 23–24)", "/guides/christmas-flowers-manhattan"],
   ["Girlfriend", "/guides/what-flowers-to-send-your-girlfriend"],
   ["Wife", "/guides/flowers-for-your-wife"],
   ["Mom", "/guides/flowers-for-mom"],
   ["Mother's Day", "/guides/mothers-day-flowers-manhattan"],
   ["Grandma", "/guides/flowers-for-grandma"],
   ["Sister or best friend", "/guides/flowers-for-your-sister-or-best-friend"],
-  ["Sending from abroad", "/guides/send-flowers-to-mom-in-nyc-from-out-of-town"],
+  ["Sending from abroad", "/guides/send-flowers-to-manhattan-from-abroad"],
   ["Your neighborhood", "/delivery"],
 ];
 
@@ -58,7 +61,7 @@ export default async function Home() {
             <p className="eyebrow">Manhattan · same-day before {DELIVERY.sameDayCutoffHourET}:00 ET</p>
             <h1>Fresh flowers, a handwritten card, at her door.</h1>
             <p className="lede">
-              Three seasonal bouquets, delivered anywhere in Manhattan. One price with everything included. Order in a minute — or ask your AI assistant to do it.
+              Five best-selling bouquets from $89, delivered anywhere in Manhattan. One price with everything included. Order in a minute — or ask your AI assistant to do it.
             </p>
             <div className="hero-actions">
               <Link className="btn" href={cap.soldOut ? "/sold-out" : "/order"}>

@@ -19,7 +19,7 @@ export const productSchema = (t: Tier, soldOut: boolean) => ({
   "@context": "https://schema.org",
   "@type": "Product",
   name: `${SITE.name} ${t.name} — ${t.headline}`,
-  description: `${t.description} Price includes flowers, handwritten card, delivery in Manhattan and tax.`,
+  description: `${t.description} Price includes flowers, ${t.card} card, delivery in Manhattan and tax.`,
   brand: { "@type": "Brand", name: SITE.name },
   sku: t.id,
   category: "Flowers > Bouquets",

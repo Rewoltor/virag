@@ -1,4 +1,4 @@
-import { DELIVERY, LIMITS } from "./config";
+import { DELIVERY, LIMITS, UPPER_MANHATTAN_ZIPS, type Tier } from "./config";
 
 /** Current date (YYYY-MM-DD) and hour in New York. */
 export function nowInNewYork(now = new Date()) {
@@ -56,4 +56,16 @@ export function checkDeliveryDate(date: string | undefined, now = new Date()): D
   const last = addDays(earliest, LIMITS.maxDaysAhead);
   if (date > last) return { ok: false, error: `We take orders up to ${LIMITS.maxDaysAhead} days ahead (last date ${last}).` };
   return { ok: true, date };
+}
+
+/**
+ * Gift-boxed tiers go same-day only below 125th St. Returns the date to use (bumped to the next
+ * day when the caller didn't ask for one) or an error when the caller explicitly asked for today.
+ */
+export function applyTierZipRule(tier: Tier, zip: string, date: string, explicit: boolean, now = new Date()): DateCheck {
+  const today = nowInNewYork(now).date;
+  if (tier.sameDayAboveHarlem || date !== today || !UPPER_MANHATTAN_ZIPS.includes(zip)) return { ok: true, date };
+  const next = availableDates(now).find((d) => d > today);
+  if (!explicit && next) return { ok: true, date: next };
+  return { ok: false, error: `${tier.name} is delivered same-day only below 125th Street. For ZIP ${zip} the earliest date is ${next}. Or choose Classic, Romantic or Grand Gesture for same-day.` };
 }

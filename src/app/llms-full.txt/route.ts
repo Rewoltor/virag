@@ -22,7 +22,7 @@ export function GET() {
 
   const body = `# ${SITE.legalName} — full text
 
-Flower delivery with a handwritten card anywhere in Manhattan (ZIP ${DELIVERY.zipMin}–${DELIVERY.zipMax}). Same-day before ${DELIVERY.sameDayCutoffHourET}:00 America/New_York.
+Best-selling bouquets with your card message, delivered anywhere in Manhattan (ZIP ${DELIVERY.zipMin}–${DELIVERY.zipMax}). Same-day before ${DELIVERY.sameDayCutoffHourET}:00 America/New_York.
 Prices are all-in (flowers, card, delivery, tax):
 ${TIERS.map((t) => `- ${t.name} (${t.id}): $${t.priceUsd} — ${t.headline}. Best for: ${t.bestFor.join(", ")}.`).join("\n")}
 

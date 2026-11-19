@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const FAQ = [
   { q: "Where do you deliver?", a: `Manhattan only, ZIP codes ${DELIVERY.zipMin}–${DELIVERY.zipMax}, including Roosevelt Island.` },
   { q: "When will the flowers arrive?", a: `On the date you choose, between ${DELIVERY.window}. Same-day delivery is available if you pay before ${DELIVERY.sameDayCutoffHourET}:00 New York time.` },
-  { q: "What's included in the price?", a: "Flowers, a handwritten card with your message, delivery in Manhattan and tax. No extra fees." },
+  { q: "What's included in the price?", a: "Flowers, a card with your message (handwritten for Classic, Romantic and Grand Gesture; printed for the gift-boxed Petite and Sweet), delivery in Manhattan and tax. No extra fees." },
   { q: "Will the bouquet look exactly like the description?", a: "Flowers are seasonal and arranged fresh by hand, so exact stems vary. The florist may substitute flowers of equal or greater value in the same style and palette. Roses tiers are always roses." },
   { q: "What if she isn't home?", a: "The courier calls the recipient. With a doorman or front desk, flowers are left there. Otherwise we reattempt or contact you." },
   { q: "Can I cancel?", a: "Yes, for a full refund until the order has been sent to the florist (usually the morning of delivery). Email us with your order id." },

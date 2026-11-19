@@ -17,7 +17,7 @@ export default function About() {
       <article className="wrap narrow">
         <h1>About Virág</h1>
         <p className="answer">
-          Virág (Hungarian for &quot;flower&quot;) is a small pilot that sells three flower bouquets for delivery in Manhattan, New York, with fixed all-in prices and a handwritten card. It is built so
+          Virág (Hungarian for &quot;flower&quot;) is a small pilot that sells five best-selling flower bouquets from New York florists for delivery in Manhattan, with fixed all-in prices and a card with your message. It is built so
           that AI assistants can order as easily as people can. Last updated 2026-11-19.
         </p>
 

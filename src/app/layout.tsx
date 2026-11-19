@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name} — Flowers for Her, Delivered in Manhattan`, template: `%s | ${SITE.name}` },
   description:
-    "Send flowers to your girlfriend in Manhattan. Three bouquets ($119, $229, $749) all-in with a handwritten card and delivery. Order on the web or let your AI assistant order via API or MCP.",
+    "Send flowers to someone you love in Manhattan. Five best-selling bouquets from $89 all-in, with a card and delivery included. Order on the web or let your AI assistant order via API or MCP.",
   alternates: { types: { "text/plain": "/llms.txt" } },
   openGraph: { type: "website", siteName: SITE.name },
   verification: {
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div>
               <strong>{SITE.name}</strong>
               <br />
-              Flowers with a handwritten card, delivered anywhere in Manhattan, New York.
+              Best-selling bouquets with your card message, delivered anywhere in Manhattan, New York.
               <br />
               <a href={`mailto:${SITE.supportEmail}`}>{SITE.supportEmail}</a>
             </div>
@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api/catalog">Catalog JSON</a> · <a href="/openapi.json">OpenAPI</a> · MCP: <code>/mcp</code>
             </div>
             <div>
-              <Link href="/about">About</Link> · <Link href="/delivery">Delivery areas</Link> · <Link href="/guides/flowers-for-mom">Flowers for Mom</Link> · <Link href="/faq">FAQ & policies</Link> · <Link href="/terms">Terms</Link>
+              <Link href="/about">About</Link> · <Link href="/delivery">Delivery areas</Link> · <Link href="/guides/flowers-for-mom">Flowers for Mom</Link> · <Link href="/faq">FAQ & policies</Link> · <Link href="/terms">Terms</Link> · <Link href="/privacy">Privacy</Link>
             </div>
           </div>
         </footer>

@@ -6,7 +6,7 @@ import { notifyOwner } from "./telegram";
 
 export const waitlistSchema = z.object({
   email: z.string().trim().email(),
-  tier: z.enum(["sweet", "romantic", "grand"]).optional(),
+  tier: z.enum(["petite", "sweet", "classic", "romantic", "grand"]).optional(),
   zip: z.string().trim().max(10).optional(),
   note: z.string().trim().max(300).optional(),
   agent_name: z.string().trim().max(60).optional(),

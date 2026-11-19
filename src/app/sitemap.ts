@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE.url}/guides`, lastModified: now, priority: 0.8 },
     { url: `${SITE.url}/faq`, lastModified: now, priority: 0.6 },
     { url: `${SITE.url}/about`, lastModified: now, priority: 0.5 },
+    { url: `${SITE.url}/privacy`, lastModified: now, priority: 0.3 },
+    { url: `${SITE.url}/skill.md`, lastModified: now, priority: 0.5 },
     { url: `${SITE.url}/delivery`, lastModified: now, priority: 0.7 },
     { url: `${SITE.url}/llms.txt`, lastModified: now, priority: 0.6 },
     { url: `${SITE.url}/llms-full.txt`, lastModified: now, priority: 0.5 },
