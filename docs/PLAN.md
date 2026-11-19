@@ -1,5 +1,7 @@
 # Virág — Pilot Plan (v0.1, 2026-11-19)
 
+**Agreed 2026-11-19:** Manhattan only · $119 / $229 / $749 · owner in CET (next-day default, same-day before 11:00 ET).
+
 **Goal:** test whether AI agents (and the people behind them) will buy flowers from a site built for agents.
 **Not the goal:** build a marketplace. Fulfilment is manual (concierge). Max 20 paid orders.
 
