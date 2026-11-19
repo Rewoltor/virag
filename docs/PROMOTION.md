@@ -19,6 +19,8 @@ mcp-publisher publish
 curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.Rewoltor/virag"
 ```
 
+Status 2026-11-19: **official registry ✅ published; Glama ✅ already lists it (auto-imported); Smithery ❌ no longer accepts submissions (shut down accounts/publishing Oct 31, now a curated directory).** PulseMCP still open.
+
 Then add the same URL (`https://virag-nine.vercel.app/mcp`) on:
 - **Smithery** — smithery.ai → sign in with GitHub → "Add server" → remote URL.
 - **Glama** — glama.ai/mcp/servers → "Add server" (it reads the GitHub repo; the repo must be public).
