@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const ga = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
+  const gtm = process.env.NEXT_PUBLIC_GTM_ID || "GTM-W6F7HRL4";
+  const ga = gtm ? "" : process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;
   return (
     <html lang="en">
       <head>
@@ -22,6 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="service-desc" type="application/json" href="/openapi.json" />
       </head>
       <body>
+        {gtm ? (
+          <noscript>
+            <iframe src={`https://www.googletagmanager.com/ns.html?id=${gtm}`} height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
+          </noscript>
+        ) : null}
         <header className="site">
           <div className="wrap">
             <Link href="/" className="brand">
@@ -56,6 +62,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
           </div>
         </footer>
+        {gtm ? (
+          <Script id="gtm" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtm}');`}
+          </Script>
+        ) : null}
         {ga ? (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive" />
