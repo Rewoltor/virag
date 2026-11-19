@@ -5,6 +5,7 @@ import { safeCapacity } from "@/lib/orders";
 import { businessSchema, faqSchema, productSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { Arrow, TierCards } from "@/components/TierCards";
+import { AskAI } from "@/components/AskAI";
 import { GUIDES } from "@/content/guides";
 import { IMAGES } from "@/content/images";
 
@@ -143,11 +144,36 @@ export default async function Home() {
           ))}
         </ul>
 
+        <h2>Compare the bouquets</h2>
+        <div className="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Bouquet</th>
+                <th>Price (all-in)</th>
+                <th>What you get</th>
+                <th>Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TIERS.map((t) => (
+                <tr key={t.id}>
+                  <td>{t.name}</td>
+                  <td>${t.priceUsd}</td>
+                  <td>{t.headline}</td>
+                  <td>{t.bestFor.slice(0, 3).join(", ")}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <h2>Let your AI assistant order</h2>
         <p>
           Fixed all-in prices, a <a href="/api/catalog">JSON catalog</a>, an ordering API, an MCP server at <code>/mcp</code> and <a href="/llms.txt">llms.txt</a>. Your assistant
           prepares the order and gets a secure checkout link — you approve and pay. <Link href="/guides/ask-your-ai-assistant-to-send-flowers">How it works</Link>
         </p>
+        <AskAI />
 
         <h2>Not sure what to send?</h2>
         <ul className="link-list">

@@ -6,6 +6,7 @@ import { CARD_MESSAGES } from "@/content/cards";
 import { SITE, tierById } from "@/lib/config";
 import { faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
+import { AskAI } from "@/components/AskAI";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -96,6 +97,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             Send the {tier.name}
           </Link>
         </div>
+
+        <AskAI context={g.title} />
 
         <h2>FAQ</h2>
         {g.faq.map((f) => (

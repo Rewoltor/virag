@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api/catalog">Catalog JSON</a> · <a href="/openapi.json">OpenAPI</a> · MCP: <code>/mcp</code>
             </div>
             <div>
-              <Link href="/delivery">Delivery areas</Link> · <Link href="/guides/flowers-for-mom">Flowers for Mom</Link> · <Link href="/faq">FAQ & policies</Link> · <Link href="/terms">Terms</Link>
+              <Link href="/about">About</Link> · <Link href="/delivery">Delivery areas</Link> · <Link href="/guides/flowers-for-mom">Flowers for Mom</Link> · <Link href="/faq">FAQ & policies</Link> · <Link href="/terms">Terms</Link>
             </div>
           </div>
         </footer>
