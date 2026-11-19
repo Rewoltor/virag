@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const gtm = process.env.NEXT_PUBLIC_GTM_ID || "GTM-W6F7HRL4";
+  const gtm = process.env.NEXT_PUBLIC_GTM_ID || "GTM-N48NBXZL";
   const ga = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-21D21R99ZB"; // GA4 loaded directly; don't also add a GA4 tag inside GTM
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${label.variable}`}>
