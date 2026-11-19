@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
+import { Cormorant_Garamond, EB_Garamond, Jost } from "next/font/google";
 import { SITE } from "@/lib/config";
 import "./globals.css";
+
+const display = Cormorant_Garamond({ subsets: ["latin", "latin-ext"], weight: ["400", "500", "600"], variable: "--font-display", display: "swap" });
+const body = EB_Garamond({ subsets: ["latin", "latin-ext"], weight: ["400", "500"], variable: "--font-body", display: "swap" });
+const label = Jost({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-label", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -21,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const gtm = process.env.NEXT_PUBLIC_GTM_ID || "GTM-W6F7HRL4";
   const ga = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID || "G-21D21R99ZB"; // GA4 loaded directly; don't also add a GA4 tag inside GTM
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${body.variable} ${label.variable}`}>
       <head>
         <link rel="alternate" type="application/json" href="/api/catalog" title="Product catalog (JSON)" />
         <link rel="service-desc" type="application/json" href="/openapi.json" />
@@ -34,16 +39,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ) : null}
         <header className="site">
           <div className="wrap">
-            <Link href="/" className="brand">
-              Virág<span>.</span>
+            <Link href="/" className="brand" aria-label="Virág home">
+              Virág
             </Link>
             <nav className="main" aria-label="Main">
-              <Link href="/order">Order</Link>
+              <Link href="/#bouquets">Bouquets</Link>
               <Link href="/guides">Guides</Link>
               <Link href="/guides/what-to-write-on-a-flower-card">Card messages</Link>
+              <Link href="/delivery">Delivery</Link>
               <Link href="/guides/ask-your-ai-assistant-to-send-flowers">For AI agents</Link>
-              <Link href="/faq">FAQ</Link>
             </nav>
+            <Link href="/order" className="nav-cta">
+              Send flowers
+            </Link>
           </div>
         </header>
         {children}
