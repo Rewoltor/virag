@@ -240,6 +240,8 @@ export async function createOrder(raw: unknown, ctx: TrackContext): Promise<Crea
       client_reference_id: id,
       metadata: { order_id: id, tier: tier.id, delivery_date: date },
       payment_intent_data: { metadata: { order_id: id }, description: `Virág order ${id}` },
+      // Paid invoice (PDF) emailed to the buyer after payment.
+      invoice_creation: { enabled: true, invoice_data: { metadata: { order_id: id }, footer: `Virág order ${id}` } },
       success_url: `${SITE.url}/order/success?order_id=${id}`,
       cancel_url: `${SITE.url}/order/cancelled?order_id=${id}`,
     });
