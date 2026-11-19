@@ -1,0 +1,10 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Rewoltor/virag",
+  "title": "Virág — Manhattan flower delivery",
+  "description": "Send flowers with a handwritten card anywhere in Manhattan, NYC. List bouquets, check delivery, suggest card messages, create an order (Stripe checkout link) and track it.",
+  "repository": { "url": "https://github.com/Rewoltor/virag", "source": "github" },
+  "websiteUrl": "https://virag-nine.vercel.app",
+  "version": "1.0.0",
+  "remotes": [{ "type": "streamable-http", "url": "https://virag-nine.vercel.app/mcp" }]
+}

@@ -4,6 +4,7 @@ Flower ordering built for AI agents. Pilot to test demand: Manhattan only, 3 pri
 
 - Plan & decisions: [docs/PLAN.md](docs/PLAN.md)
 - Original idea: [docs/idea.md](docs/idea.md)
+- Promotion kit: [docs/PROMOTION.md](docs/PROMOTION.md)
 
 ## Stack
 Next.js 16 on Vercel · Firestore (`virag-a96a6`, us-east4) · Stripe Checkout · Telegram bot · server-side agent tracking + GA4 · MCP server.
